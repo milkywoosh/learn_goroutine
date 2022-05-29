@@ -1,0 +1,4 @@
+goroutine 
+	- main function -> counted as 1(main) goroutine
+	- child goroutine
+	- child goroutine
