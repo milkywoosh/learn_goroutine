@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 /*
@@ -13,7 +14,7 @@ import (
 		channel <- string
 		channel <- int64
 		// receivng message from a channel is BLOCKING
-		// because it wait some data from certain resource
+		// because it wait some data from certain resource to receive
 
 */
 func checkLink(link string, c chan string) {
@@ -25,8 +26,8 @@ func checkLink(link string, c chan string) {
 		return
 	}
 
-	// fmt.Println(link, "is up!")
-	c <- link
+	fmt.Println(link, "is up!")
+	// c <- link
 }
 
 func main() {
@@ -42,6 +43,7 @@ func main() {
 	c <- "test"
 	for _, link := range links {
 		go checkLink(link, c)
+		time.Sleep(500 * time.Millisecond)
 	}
 
 	// fmt.Println(<-c, "channel shared memory from inside check link")

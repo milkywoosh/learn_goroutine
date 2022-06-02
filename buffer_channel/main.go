@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-
+	// 100 --> is argument as how many data will be received
 	c := make(chan string, 100)
 	c <- "hello world"
 	c <- "hello 1"
